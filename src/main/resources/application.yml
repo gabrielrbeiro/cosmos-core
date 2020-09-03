@@ -7,7 +7,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:15432/ls_cosmos_core
     username: postgres
-    password: sv2020
+    password: cosmosCore
 
   flyway:
     enabled: true
