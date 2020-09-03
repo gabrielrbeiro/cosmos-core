@@ -12,7 +12,7 @@ jobs:
     environment:
       JVM_OPTS: -Xmx3200m
       TERM: dumb
-      SPRING_PROFILES_ACTIVE: development
+      SPRING_PROFILES_ACTIVE: tests
 
     steps:
       - checkout:
