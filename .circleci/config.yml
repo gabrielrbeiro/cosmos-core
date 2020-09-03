@@ -2,12 +2,11 @@ version: 2
 jobs:
   build:
     docker:
+      - image: circleci/openjdk:11.0.8-jdk
       - image: circleci/postgres:12.2
         environment:
           POSTGRES_DB: ls_cosmos_core_test
           POSTGRES_PASSWORD: cosmosCore
-
-      - image: circleci/openjdk:11.0.8-jdk
 
     working_directory: ~/cosmos-core
     environment:
