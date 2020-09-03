@@ -16,7 +16,7 @@ jobs:
           keys:
             - cosmos-core-{{ checksum "build.gradle" }}
 
-      - run: gradlew clean
+      - run: gradle clean
       - save_cache:
           paths:
             - ~/.m2
