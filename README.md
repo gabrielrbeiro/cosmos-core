@@ -1,3 +1,3 @@
 Cosmos Core
 ---
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f91c24f56d9e4fbfa9e22bb9aa2566ff)](https://www.codacy.com/manual/gabrielrbeiro/cosmos-core?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gabrielrbeiro/cosmos-core&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/77f3fc759ca944d485f9ffab32efe593)](https://app.codacy.com/manual/gabrielrbeiro/cosmos-core?utm_source=github.com&utm_medium=referral&utm_content=gabrielrbeiro/cosmos-core&utm_campaign=Badge_Grade_Dashboard)
