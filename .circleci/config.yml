@@ -10,11 +10,18 @@ jobs:
       - image: circleci/openjdk:11.0.8-jdk
 
     working_directory: ~/cosmos-core
+    environment:
+      JVM_OPTS: -Xmx3200m
+      TERM: dumb
+
     steps:
-      - checkout
+      - checkout:
+          path: ~/cosmos-core
+
       - restore_cache:
           keys:
             - cosmos-core-{{ checksum "build.gradle" }}
+            - cosmos-core-
 
       - run: ./gradlew clean
       - save_cache:
