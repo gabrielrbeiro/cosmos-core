@@ -33,7 +33,7 @@ public class DefaultAccessGroupService implements AccessGroupService {
   public List<AccessGroup> list(int page, int size, String query, List<String> ordering) {
 
     if (query == null && ordering == null) {
-      var pageSpec = PageRequest.of(page, size);
+      var pageSpec = PageRequest.of((page - 1), size);
       return accessGroupRepository.findAll(pageSpec).getContent();
     } else {
 
