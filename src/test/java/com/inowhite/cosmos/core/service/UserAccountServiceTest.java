@@ -67,6 +67,7 @@ public class UserAccountServiceTest {
 
   @Test
   public void testShouldMakeASoftRemove() {
+    insertBulkUserAccount();
     var results = userAccountService.list(1, 1);
     var singleResult = userAccountService.findById(results.get(0).getId());
     assertTrue(singleResult.isPresent());
@@ -85,6 +86,7 @@ public class UserAccountServiceTest {
 
   @Test
   public void testShouldUpdateLastUpdateWhenSaving() {
+    insertBulkUserAccount();
     var results = userAccountService.list(1, 1);
     var userAccount = results.get(0);
     userAccountService.createOrUpdate(userAccount);

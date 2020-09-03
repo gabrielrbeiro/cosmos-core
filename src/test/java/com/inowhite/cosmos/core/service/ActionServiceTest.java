@@ -63,6 +63,7 @@ public class ActionServiceTest {
 
   @Test
   public void testShouldFindActionById() {
+    insertBulkActions();
     final String id = "action:1";
     var result = actionService.findById(id);
     assertTrue(result.isPresent());
