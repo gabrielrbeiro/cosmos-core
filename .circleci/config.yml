@@ -30,7 +30,7 @@ jobs:
           key: cosmos-core-{{ checksum "build.gradle" }}
 
       - store_test_results:
-          - path: ~/cosmos-core/build/test-results/test
+          path: ~/cosmos-core/build/test-results/test
 
       - run: gradle bootJar
       - store_artifacts:
