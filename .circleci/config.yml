@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/postgres:12.4-alpine
+      - image: circleci/postgres:12.2
         environment:
           POSTGRES_DB: ls_cosmos_core_test
           POSTGRES_PASSWORD: cosmosCore
