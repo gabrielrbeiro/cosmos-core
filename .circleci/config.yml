@@ -12,6 +12,7 @@ jobs:
     environment:
       JVM_OPTS: -Xmx3200m
       TERM: dumb
+      SPRING_PROFILES_ACTIVE: development
 
     steps:
       - checkout:
@@ -27,6 +28,9 @@ jobs:
           paths:
             - ~/.m2
           key: cosmos-core-{{ checksum "build.gradle" }}
+
+      - store_test_results:
+          - path: ~/cosmos-core/build/test-results/test
 
       - run: gradle bootJar
       - store_artifacts:
