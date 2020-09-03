@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: logicsphere-cosmos-core
+
+  profiles: development, tests
+
+  datasource:
+    url: jdbc:postgresql://localhost:15432/ls_cosmos_core
+    username: postgres
+    password: sv2020
+
+  flyway:
+    enabled: true
+
+---
+spring:
+  profiles: tests
+
+  datasource:
+    url: jdbc:postgresql://localhost:15432/ls_cosmos_core_test
+
+  cloud:
+    zookeeper:
+      enabled: false
+
+    consul:
+      enabled: false
