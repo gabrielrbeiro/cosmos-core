@@ -1,6 +1,5 @@
 package com.inowhite.cosmos.core.service;
 
-import com.inowhite.cosmos.core.entity.Action;
 import com.inowhite.cosmos.core.entity.UserAccount;
 import com.inowhite.cosmos.core.repository.UserAccountRepository;
 import org.junit.jupiter.api.Test;
@@ -9,8 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 

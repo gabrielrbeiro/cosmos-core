@@ -2,7 +2,6 @@ package com.inowhite.cosmos.core.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -29,7 +28,7 @@ public class AccessGroup {
   private String description;
   private ZonedDateTime createdAt;
   private ZonedDateTime lastUpdate;
-  private Boolean enabled;
+  private boolean enabled;
 
   @ManyToMany
   @JoinTable(

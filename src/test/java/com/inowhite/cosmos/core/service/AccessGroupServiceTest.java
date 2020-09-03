@@ -124,6 +124,10 @@ public class AccessGroupServiceTest {
     var group = new AccessGroup();
     group.setName("New Test group");
     accessGroupService.createOrUpdate(group);
+    assertNotNull(group.getId());
+    assertNotNull(group.getCreatedAt());
+    assertTrue(group.isEnabled());
+    assertNull(group.getLastUpdate());
   }
 
   private void insertBulkAccessGroups() {
