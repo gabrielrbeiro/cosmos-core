@@ -12,9 +12,6 @@ jobs:
     working_directory: ~/cosmos-core
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
-
       - restore_cache:
           keys:
             - cosmos-core-{{ checksum "build.gradle" }}
