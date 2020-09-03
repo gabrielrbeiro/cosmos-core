@@ -16,13 +16,13 @@ jobs:
           keys:
             - cosmos-core-{{ checksum "build.gradle" }}
 
-      - run: gradle clean
+      - run: ./gradlew clean
       - save_cache:
           paths:
             - ~/.m2
           key: cosmos-core-{{ checksum "build.gradle" }}
 
-      - run: gradlew bootJar
+      - run: ./gradlew bootJar
       - store_artifacts:
           path: build/libs
           destination: cosmos-core
