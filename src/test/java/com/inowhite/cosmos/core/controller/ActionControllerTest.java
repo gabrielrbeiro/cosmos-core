@@ -2,14 +2,16 @@ package com.inowhite.cosmos.core.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.inowhite.cosmos.core.dto.ActionDto;
-import org.junit.jupiter.api.Order;
+import com.inowhite.cosmos.core.entity.Action;
+import com.inowhite.cosmos.core.service.ActionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -24,9 +26,18 @@ public class ActionControllerTest {
   @Autowired
   private ObjectMapper objectMapper;
 
+  @Autowired
+  private ActionService actionService;
+
   @Test
-  @Order(1)
   public void testCreateNewAction() throws Exception {
+
+    var query = "code==random:test_action;description=='Just a test action'";
+    var result = actionService.list(1, 15, query);
+
+    if (!result.isEmpty()) {
+      result.forEach(actionService::remove);
+    }
 
     var body = new ActionDto()
       .setCode("random:test_action")
@@ -41,12 +52,7 @@ public class ActionControllerTest {
   }
 
   @Test
-  @Order(2)
   public void testListAction() throws Exception {
-
-    var body = new ActionDto()
-      .setCode("random:test_action")
-      .setDescription("Just a test action");
 
     mockMvc.perform(
       get("/api/action")
@@ -57,9 +63,8 @@ public class ActionControllerTest {
   }
 
   @Test
-  @Order(3)
   public void testUpdateAction() throws Exception {
-
+    createOnMissing();
     var body = new ActionDto()
       .setCode("random:test_action")
       .setDescription("Just a test action, changed");
@@ -73,13 +78,22 @@ public class ActionControllerTest {
   }
 
   @Test
-  @Order(4)
   public void testDeleteAction() throws Exception {
-
+    createOnMissing();
     mockMvc.perform(
       delete("/api/action/random:test_action")
     ).andExpect(status().isNoContent());
+  }
 
+  private void createOnMissing() {
+    var list = actionService.list(1, 15);
+    if (list.isEmpty()) {
+      actionService.createOrUpdate(
+        new Action()
+          .setCode("random:test_action")
+          .setDescription("Just a test action")
+      );
+    }
   }
 
 }
