@@ -1,7 +1,4 @@
-version: 2
-orbs:
-  codecov: codecov/codecov@1.1.1
-
+version: 2.1
 jobs:
   build:
     docker:
@@ -27,6 +24,7 @@ jobs:
             - cosmos-core-
 
       - run: gradle test
+      - run: gradle jacocoTestReport
       - save_cache:
           paths:
             - ~/.m2
@@ -40,5 +38,4 @@ jobs:
           path: build/libs
           destination: cosmos-core
 
-      - codecov/upload:
-          file: {{ coverage_report_filepath }}
+      - run: bash <(curl -s https://codecov.io/bash)
