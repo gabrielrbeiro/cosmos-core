@@ -1,4 +1,4 @@
-package com.inowhite.cosmos.core.aspect;
+package com.inowhite.cosmos.core.aspect.service;
 
 import org.aspectj.lang.JoinPoint;
 

@@ -1,4 +1,4 @@
-package com.inowhite.cosmos.core.aspect;
+package com.inowhite.cosmos.core.aspect.service;
 
 import com.inowhite.cosmos.core.entity.AccessGroup;
 import org.aspectj.lang.JoinPoint;
@@ -11,11 +11,6 @@ import java.time.ZonedDateTime;
 @Aspect
 @Component
 public class AccessGroupAspect {
-
-//  @Before("execution(* com.inowhite.cosmos.core.service.AccessGroupService.list(..))")
-//  public void verifyPageableParams(JoinPoint jPoint) {
-//    AspectUtil.verifyPageableParams(jPoint);
-//  }
 
   @Before("execution (* com.inowhite.cosmos.core.service.AccessGroupService.createOrUpdate(..))")
   public void prepareAccessGroupBeforeSaving(JoinPoint jPoint) {

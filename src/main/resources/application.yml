@@ -7,7 +7,11 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/ls_cosmos_core
     username: postgres
-    password: cosmosCore
+    password: sv2020
+
+  cloud:
+    zookeeper:
+      enabled: false
 
   flyway:
     enabled: true
