@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -41,6 +42,7 @@ public class AccessGroup {
   public AccessGroup() {
     this.createdAt = ZonedDateTime.now();
     this.enabled = true;
+    this.grants = new ArrayList<>();
   }
 
 }

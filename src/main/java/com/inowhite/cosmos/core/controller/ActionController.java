@@ -4,6 +4,8 @@ import com.inowhite.cosmos.core.dto.ActionDto;
 import com.inowhite.cosmos.core.dto.ErrorMessageDto;
 import com.inowhite.cosmos.core.dto.mapper.ActionMapper;
 import com.inowhite.cosmos.core.service.ActionService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,8 @@ import java.util.Arrays;
 @RestController
 @RequestMapping("/api/action")
 public class ActionController {
+
+  private static final Logger logger = LoggerFactory.getLogger(ActionController.class);
 
   private final ActionService actionService;
   private final ActionMapper actionMapper;
@@ -89,6 +93,7 @@ public class ActionController {
 
   @DeleteMapping("{id}")
   public ResponseEntity<?> removeAction(@PathVariable String id) {
+    logger.info("Looking for record with id '{}'", id);
     var optional = actionService.findById(id);
 
     if (optional.isEmpty()) {

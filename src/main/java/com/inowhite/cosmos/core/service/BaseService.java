@@ -16,7 +16,7 @@ public interface BaseService<T, I> {
   List<T> list(int page, int size, String query, List<String> ordering);
   Long count(String query);
   Optional<T> findById(I code);
-  void createOrUpdate(T action);
-  void remove(T action);
+  void createOrUpdate(T item);
+  void remove(T item);
 
 }

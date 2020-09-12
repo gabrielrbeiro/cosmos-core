@@ -69,7 +69,8 @@ public class AccessGroupServiceTest {
     if (list.isEmpty()) {
       var group = new AccessGroup();
       group.setName("Access Group tests");
-      accessGroupService.createOrUpdate(group);
+      group.setEnabled(true);
+      accessGroupRepository.saveAndFlush(group);
       id = group.getId();
     } else {
       id = list.get(0).getId();

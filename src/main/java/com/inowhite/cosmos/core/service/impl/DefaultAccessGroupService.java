@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
@@ -34,7 +35,7 @@ public class DefaultAccessGroupService implements AccessGroupService {
 
     if (query == null && ordering == null) {
       var pageSpec = PageRequest.of((page - 1), size);
-      return accessGroupRepository.findAll(pageSpec).getContent();
+      return accessGroupRepository.findAllActive(pageSpec).getContent();
     } else {
 
       var cb = entityManager.getCriteriaBuilder();
@@ -43,7 +44,7 @@ public class DefaultAccessGroupService implements AccessGroupService {
       cq.select(root);
 
       if (query != null && query.trim().length() > 0) {
-        appendQuery(query, root, cq);
+        appendQuery(query, root, cq, cb);
       }
 
       if (ordering != null && !ordering.isEmpty()) {
@@ -68,11 +69,16 @@ public class DefaultAccessGroupService implements AccessGroupService {
 
   }
 
-  private void appendQuery(String query, Root<?> root, CriteriaQuery<?> cq) {
+  private void appendQuery(String query, Root<?> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
     var visitor = new JpaPredicateVisitor<Action>().defineRoot(root);
     var rootNode = new RSQLParser().parse(query);
     Predicate predicate = rootNode.accept(visitor, entityManager);
-    cq.where(predicate);
+    cq.where(
+      cb.and(
+        predicate,
+        cb.equal(root.get("enabled"), true)
+      )
+    );
   }
 
   @Override
@@ -83,7 +89,7 @@ public class DefaultAccessGroupService implements AccessGroupService {
     cq.select(cb.count(root));
 
     if (query != null) {
-      appendQuery(query, root, cq);
+      appendQuery(query, root, cq, cb);
     }
 
     return entityManager.createQuery(cq).getSingleResult();
