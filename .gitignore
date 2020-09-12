@@ -32,4 +32,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
 .temp/
+bin/
