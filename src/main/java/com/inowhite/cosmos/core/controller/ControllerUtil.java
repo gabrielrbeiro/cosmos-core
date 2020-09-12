@@ -16,10 +16,21 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.inowhite.cosmos.core.service;
+package com.inowhite.cosmos.core.controller;
 
-public interface PasswordService {
-  byte[] generateContext(int size);
-  String encodeWithContext(byte[] context, String provided);
-  boolean verifyWithContext(byte[] context, String encoded, String provided);
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class ControllerUtil {
+
+  public static List<String> getOrderSpecAsList(String specs) {
+    if (specs != null && !specs.isBlank()) {
+      var chunks = specs.split(";");
+      return new ArrayList<>(Arrays.asList(chunks));
+    }
+
+    return null;
+  }
+
 }

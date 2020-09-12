@@ -1,16 +1,11 @@
 package com.inowhite.cosmos.core.service;
 
-import com.inowhite.cosmos.core.entity.AccessGroup;
 import com.inowhite.cosmos.core.repository.AccessGroupRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class StartupServiceTest {

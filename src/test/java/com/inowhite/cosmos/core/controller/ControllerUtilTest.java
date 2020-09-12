@@ -16,10 +16,25 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.inowhite.cosmos.core.service;
+package com.inowhite.cosmos.core.controller;
 
-public interface PasswordService {
-  byte[] generateContext(int size);
-  String encodeWithContext(byte[] context, String provided);
-  boolean verifyWithContext(byte[] context, String encoded, String provided);
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@SpringBootTest
+public class ControllerUtilTest {
+
+  @Test
+  public void testGetOrderSpecAsList() {
+    final String specs = "+id;-createdAt";
+    var result = ControllerUtil.getOrderSpecAsList(specs);
+    var expected = Arrays.asList("+id", "-createdAt");
+    assertEquals(expected.get(0), result.get(0));
+    assertEquals(expected.get(1), result.get(1));
+  }
+
 }

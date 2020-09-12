@@ -1,3 +1,21 @@
+/*
+ * Cosmos - IT Management and Service Desk System
+ * Copyright (C) 2020  Gabriel Ribeiro
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 package com.inowhite.cosmos.core.controller;
 
 import com.inowhite.cosmos.core.dto.ActionDto;
@@ -9,9 +27,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 @RestController
 @RequestMapping("/api/action")
@@ -33,11 +48,7 @@ public class ActionController {
                                        @RequestParam(required = false) String query,
                                        @RequestParam(required = false) String orderSpecsStr) {
 
-    var orderSpecs = new ArrayList<String>();
-    if (orderSpecsStr != null && !orderSpecsStr.isBlank()) {
-      var specs = orderSpecsStr.split(";");
-      orderSpecs.addAll(Arrays.asList(specs));
-    }
+    var orderSpecs = ControllerUtil.getOrderSpecAsList(orderSpecsStr);
     var result = actionService.list(page, size, query, orderSpecs);
     var count = actionService.count(query);
 

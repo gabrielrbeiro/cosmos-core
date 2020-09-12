@@ -2,8 +2,6 @@ spring:
   application:
     name: logicsphere-cosmos-core
 
-  profiles: development, tests
-
   datasource:
     url: jdbc:postgresql://localhost:5432/ls_cosmos
     username: cosmos
@@ -13,8 +11,23 @@ spring:
     zookeeper:
       enabled: false
 
+    consul:
+      enabled: false
+
   flyway:
     enabled: true
+
+  zipkin:
+    enabled: false
+
+---
+spring:
+  profiles: debug
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
 
 ---
 spring:
