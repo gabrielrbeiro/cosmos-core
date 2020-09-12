@@ -1,8 +1,5 @@
 package com.inowhite.cosmos.core.configuration;
 
-import com.inowhite.cosmos.core.entity.AccessGroup;
-import com.inowhite.cosmos.core.entity.SystemSetting;
-import com.inowhite.cosmos.core.repository.SystemSettingRepository;
 import com.inowhite.cosmos.core.service.*;
 import lombok.Data;
 import org.slf4j.Logger;

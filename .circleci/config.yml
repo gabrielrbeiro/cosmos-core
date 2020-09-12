@@ -5,8 +5,9 @@ jobs:
       - image: circleci/openjdk:11.0.8-jdk
       - image: circleci/postgres:12.2
         environment:
-          POSTGRES_DB: ls_cosmos_core_test
-          POSTGRES_PASSWORD: cosmosCore
+          - POSTGRES_USER=cosmos
+          - POSTGRES_PASSWORD=cosmos2k20
+          - POSTGRES_DB=ls_cosmos_test
 
     working_directory: ~/cosmos-core
     environment:

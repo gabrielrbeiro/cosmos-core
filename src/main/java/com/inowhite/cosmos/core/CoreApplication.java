@@ -5,8 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
-import javax.annotation.PostConstruct;
-
 @SpringBootApplication(
   exclude = {KafkaAutoConfiguration.class}
 )
